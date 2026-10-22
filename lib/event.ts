@@ -30,7 +30,7 @@ export const event = {
   // While this is empty, the Registration section shows "More details will be
   // released soon" and no register button is displayed.
   registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "",
-  // Optional: shown in the Registration section and the footer.
+  // Optional: shown in the Registration section.
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
 
   // Public address of the page (used for link previews on WhatsApp, LinkedIn, etc.)
@@ -38,36 +38,65 @@ export const event = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://leadcom.district229.org",
 };
 
+export const kicker =
+  "Toastmasters District 229 invites HR and talent leaders to";
+
 export const lead =
   "An invitation to HR and talent leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
 
 export const audience =
   "HR, learning and development, and talent leaders from corporates that do not yet have a Toastmasters club.";
 
-export const statement =
-  "Great organisations are built by people who can communicate and lead.";
-
 export const about =
-  "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers. LeadCom 2026 introduces that experience to HR leaders, before any conversation about what it could mean for your organisation.";
+  "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers.";
 
-export const benefits = [
+// The two image-and-text sections. Images are added in public/images
+// (see README): leadcom-1.jpg and leadcom-2.jpg.
+export const splits = [
   {
-    title: "Confident communication",
-    body: "Members prepare and deliver speeches, then receive specific, kind feedback. The habit carries into client calls, reviews and town halls.",
+    tone: "blue",
+    title: "Communication that earns trust",
+    lead: "Every Toastmasters meeting is a chance to speak, listen and be heard. Members grow into people who share ideas clearly and respond well to others.",
+    points: [
+      {
+        title: "Confident communication",
+        body: "Members prepare and deliver speeches, then receive specific, kind feedback. The habit carries into client calls, reviews and town halls.",
+      },
+      {
+        title: "A culture of useful feedback",
+        body: "Evaluations critique but never demean. Teams learn to give and receive feedback that is clear, respectful and easy to act on.",
+      },
+    ],
+    cta: { label: "See the programme", href: "#programme" },
+    image: {
+      n: 1,
+      alt: "Toastmasters members at a club meeting",
+    },
   },
   {
-    title: "Leadership by practice",
-    body: "Club meetings are run by members in rotating roles. Your people chair, time, evaluate and coordinate, building leadership skills without waiting for a title.",
-  },
-  {
-    title: "Learning that fits a working week",
-    body: "Pathways, the Toastmasters learning experience, lets each member choose a path such as Dynamic Leadership, Persuasive Influence or Presentation Mastery, and learn at their own pace.",
-  },
-  {
-    title: "A culture of useful feedback",
-    body: "Toastmasters evaluations critique but never demean. Teams learn to give and receive feedback that is clear, respectful and easy to act on.",
+    tone: "maroon",
+    title: "Leadership built by practice",
+    lead: "Leadership is learned by doing. Toastmasters gives your people real roles, real responsibility and a structured path to grow into them.",
+    points: [
+      {
+        title: "Leadership by practice",
+        body: "Club meetings are run by members in rotating roles. Your people chair, time, evaluate and coordinate, building leadership skills without waiting for a title.",
+      },
+      {
+        title: "Learning that fits a working week",
+        body: "Pathways, the Toastmasters learning experience, lets each member choose a path such as Dynamic Leadership, Persuasive Influence or Presentation Mastery, and learn at their own pace.",
+      },
+    ],
+    cta: { label: "Plan your seat", href: "#register" },
+    image: {
+      n: 2,
+      alt: "A Toastmasters member leading a session",
+    },
   },
 ];
+
+export const promise =
+  "Empowering individuals through personal and professional development.";
 
 export const values = [
   {

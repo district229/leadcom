@@ -27,7 +27,13 @@ All copy, dates and links live in `lib/event.ts`.
 
 Until a registration link or contact email is set, the page shows "Registration details will be shared shortly" instead of a button. Set one before you share the page.
 
-Other files: `public/leadcom-2026.ics` (Add to calendar), `app/opengraph-image.tsx` (the preview image on WhatsApp and LinkedIn), `public/pattern-*.svg` (cool gray pattern).
+Other files: `public/leadcom-2026.ics` (Add to calendar), `app/opengraph-image.tsx` (the preview image on WhatsApp and LinkedIn), `components/ImageSlot.tsx` (the two photo slots).
+
+## Adding your two photos
+
+Save the photos as `public/images/leadcom-1.jpg` and `public/images/leadcom-2.jpg` (`.jpeg`, `.png`, `.webp` and `.avif` also work), about 1200 × 1000 px each and under 500 KB. Commit and push; the placeholders are replaced automatically on the next deploy. Photo 1 sits beside the blue section and photo 2 beside the maroon section.
+
+Toastmasters brand photography should show people who look engaged, empowered and supported: meetings, speeches, networking and conferences. Avoid landscapes, buildings, food, children and stock clip art, and make sure you have permission to use every photo.
 
 ## Using Gotham and Myriad Pro
 
