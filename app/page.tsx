@@ -113,9 +113,18 @@ export default function Page() {
         <div className="wrap header-row">
           {/* Swap this text for the official Toastmasters logo from the brand portal.
               Keep clear space equal to the wordmark height, minimum 72 px wide. */}
-          <a className="brand" href="#top" aria-label="District 229, home">
-            <span className="brand-main">District 229</span>
-            <span className="brand-sub">Toastmasters International</span>
+          <a
+              className="brand"
+              href="#top"
+              aria-label="Toastmasters International, District 229 home"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                className="brand-logo"
+                src="/images/ToastmastersWordmarkColor.jpg"
+                alt="Toastmasters International"
+            />
+            <span className="brand-district">District 229</span>
           </a>
           <nav aria-label="Page sections" className="nav">
             <a href="#about">About</a>

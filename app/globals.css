@@ -17,9 +17,9 @@
   --rule: rgba(169, 178, 177, 0.65);
 
   --font-head: "Gotham", "Gotham SSm", "Montserrat Variable", Montserrat,
-    Arial, sans-serif;
+  Arial, sans-serif;
   --font-body: "Myriad Pro", "Source Sans 3 Variable", "Source Sans 3",
-    "Segoe UI", Arial, sans-serif;
+  "Segoe UI", Arial, sans-serif;
 
   --maxw: 1180px;
   --gutter: clamp(22px, 5vw, 56px);
@@ -159,7 +159,7 @@ a {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.9s var(--ease) var(--d, 0s),
-    transform 0.9s var(--ease) var(--d, 0s);
+  transform 0.9s var(--ease) var(--d, 0s);
 }
 .js [data-reveal].in {
   opacity: 1;
@@ -216,7 +216,7 @@ a {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.25s, color 0.25s, border-color 0.25s,
-    transform 0.25s var(--ease);
+  transform 0.25s var(--ease);
 }
 .btn:hover {
   transform: translateY(-2px);
@@ -277,20 +277,15 @@ a {
   text-decoration-thickness: 2px;
 }
 
-/* ---------- Header (transparent over the stage, solid after scroll) ---------- */
+/* ---------- Header (white, carries the colour wordmark) ---------- */
 
 .site-header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 60;
-  color: var(--white);
-  border-bottom: 1px solid transparent;
-  transition: background-color 0.35s, color 0.35s, border-color 0.35s;
-}
-.site-header[data-scrolled] {
-  background: rgba(255, 255, 255, 0.97);
   color: var(--blue);
-  border-bottom-color: var(--rule);
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
 }
 .header-row {
   display: flex;
@@ -301,23 +296,34 @@ a {
 }
 .brand {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   text-decoration: none;
-  line-height: 1.2;
+  min-width: 0;
 }
-.brand-main {
+.brand-logo {
+  display: block;
+  height: 36px;
+  width: auto;
+  max-width: 100%;
+}
+.brand-district {
+  padding-left: 20px;
+  border-left: 1px solid var(--rule);
   font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.1875rem;
-  letter-spacing: -0.01em;
-}
-.brand-sub {
-  font-size: 0.8125rem;
-  color: var(--gray);
-  transition: color 0.35s;
-}
-.site-header[data-scrolled] .brand-sub {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.2;
   color: var(--maroon);
+  white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .brand-logo {
+    height: 30px;
+  }
+  .brand-district {
+    display: none;
+  }
 }
 .nav {
   display: none;
@@ -334,7 +340,7 @@ a {
   transition: border-color 0.2s;
 }
 .nav a:hover {
-  border-bottom-color: currentColor;
+  border-bottom-color: var(--maroon);
 }
 @media (min-width: 860px) {
   .nav {
@@ -345,24 +351,13 @@ a {
   min-height: 44px;
   padding: 0 1.4rem;
   font-size: 0.875rem;
-  background: var(--white);
-  border-color: var(--white);
-  color: var(--blue);
-}
-.site-header[data-scrolled] .btn-header {
   background: var(--blue);
   border-color: var(--blue);
   color: var(--white);
 }
-.site-header[data-scrolled] .btn-header:hover {
+.btn-header:hover {
   background: var(--maroon);
   border-color: var(--maroon);
-}
-.site-header :focus-visible {
-  outline-color: var(--white);
-}
-.site-header[data-scrolled] :focus-visible {
-  outline-color: var(--maroon);
 }
 
 /* ---------- Hero: the stage ---------- */
@@ -377,11 +372,11 @@ a {
   align-items: center;
   padding: calc(var(--header) + 40px) 0 110px;
   background: radial-gradient(
-      ellipse 1000px 720px at var(--mx) var(--my),
-      var(--blissful) 0%,
-      rgba(0, 96, 148, 0) 72%
-    ),
-    var(--blue);
+          ellipse 1000px 720px at var(--mx) var(--my),
+          var(--blissful) 0%,
+          rgba(0, 96, 148, 0) 72%
+  ),
+  var(--blue);
   transition: --mx 0.9s ease-out, --my 0.9s ease-out;
 }
 /* A True Maroon base line anchors the stage */
@@ -409,10 +404,10 @@ a {
   height: 125%;
   transform-origin: 50% 0;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.17) 0%,
-    rgba(255, 255, 255, 0.05) 55%,
-    rgba(255, 255, 255, 0) 100%
+          180deg,
+          rgba(255, 255, 255, 0.17) 0%,
+          rgba(255, 255, 255, 0.05) 55%,
+          rgba(255, 255, 255, 0) 100%
   );
   clip-path: polygon(45% 0, 55% 0, 100% 100%, 0 100%);
 }
