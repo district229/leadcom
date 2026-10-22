@@ -26,29 +26,40 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#ffffff",
-          borderLeft: "28px solid #004165",
-          padding: "64px 72px",
+          background: "#004165",
+          padding: "72px 84px",
           fontFamily: "Montserrat",
+          color: "#ffffff",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 40, fontWeight: 500, color: "#772432" }}>
-            Toastmasters District 229 invites HR leaders to
+          <div
+            style={{
+              width: 84,
+              height: 5,
+              background: "#ffffff",
+              marginBottom: 40,
+            }}
+          />
+          <div
+            style={{
+              fontSize: 156,
+              fontWeight: 700,
+              letterSpacing: -6,
+              lineHeight: 1,
+            }}
+          >
+            LeadCom 2026
           </div>
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              marginTop: 8,
-              fontSize: 168,
-              fontWeight: 700,
-              lineHeight: 0.95,
-              letterSpacing: -6,
+              marginTop: 28,
+              fontSize: 36,
+              fontWeight: 500,
+              color: "#A9B2B1",
             }}
           >
-            <span style={{ color: "#004165" }}>LeadCom</span>
-            <span style={{ color: "#772432" }}>2026</span>
+            An invitation to HR and talent leaders
           </div>
         </div>
         <div
@@ -57,14 +68,13 @@ export default async function Image() {
             flexDirection: "column",
             fontSize: 34,
             fontWeight: 500,
-            color: "#004165",
-            borderTop: "3px solid #A9B2B1",
-            paddingTop: 24,
+            borderTop: "2px solid #A9B2B1",
+            paddingTop: 28,
           }}
         >
-          <div>14 November 2026, 9:30 a.m. – 1:00 p.m., followed by lunch</div>
-          <div style={{ marginTop: 6, color: "#772432" }}>
-            The Westin Chennai Velachery
+          <div>14 November 2026 · 9:30 a.m. – 1:00 p.m., followed by lunch</div>
+          <div style={{ marginTop: 6, color: "#A9B2B1" }}>
+            The Westin Chennai Velachery · Toastmasters District 229
           </div>
         </div>
       </div>

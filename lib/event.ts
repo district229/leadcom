@@ -12,7 +12,8 @@ export const event = {
   endISO: "2026-11-14T13:00:00+05:30",
   weekday: "Saturday",
   day: "14",
-  monthYear: "November 2026",
+  month: "November",
+  year: "2026",
   timeLabel: "9:30 a.m. – 1:00 p.m.",
   timeNote: "Followed by lunch",
 
@@ -23,11 +24,13 @@ export const event = {
       "https://www.google.com/maps/search/?api=1&query=The+Westin+Chennai+Velachery",
   },
 
-  // ---- Fill these in before you share the link ----
-  // Paste a Google Form / Microsoft Forms / Luma link here, or set the
-  // NEXT_PUBLIC_REGISTER_URL environment variable in Vercel.
+  // ---- Fill these in when you have them ----
+  // Paste the registration link (Google Form, Microsoft Forms, Luma) here, or set
+  // the NEXT_PUBLIC_REGISTER_URL environment variable in Vercel.
+  // While this is empty, the Registration section shows "More details will be
+  // released soon" and no register button is displayed.
   registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "",
-  // Optional: a contact address shown next to the button.
+  // Optional: shown in the Registration section and the footer.
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
 
   // Public address of the page (used for link previews on WhatsApp, LinkedIn, etc.)
@@ -35,11 +38,17 @@ export const event = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://leadcom.district229.org",
 };
 
-export const audience =
-  "HR heads, learning and development leaders, and people teams at corporates that do not yet have a Toastmasters club.";
-
 export const lead =
-  "A relaxed morning for HR leaders to see how Toastmasters helps people communicate with confidence and lead with purpose, before any conversation about joining.";
+  "An invitation to HR and talent leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
+
+export const audience =
+  "HR, learning and development, and talent leaders from corporates that do not yet have a Toastmasters club.";
+
+export const statement =
+  "Great organisations are built by people who can communicate and lead.";
+
+export const about =
+  "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers. LeadCom 2026 introduces that experience to HR leaders, before any conversation about what it could mean for your organisation.";
 
 export const benefits = [
   {
@@ -60,7 +69,24 @@ export const benefits = [
   },
 ];
 
-export const values = ["Integrity", "Respect", "Service", "Excellence"];
+export const values = [
+  {
+    name: "Integrity",
+    body: "Actions that match words, and the courage to acknowledge mistakes.",
+  },
+  {
+    name: "Respect",
+    body: "Dignity for everyone, diverse perspectives welcome, critique that never demeans.",
+  },
+  {
+    name: "Service",
+    body: "Responsive, attentive and passionate support for every member.",
+  },
+  {
+    name: "Excellence",
+    body: "Meeting and exceeding expectations, together.",
+  },
+];
 
 // Edit this list to match your final programme.
 export const programme = [
@@ -85,3 +111,6 @@ export const programme = [
     body: "Continue the conversation with members and fellow HR leaders over lunch.",
   },
 ];
+
+export const programmeNote =
+  "The full programme and speakers will be announced shortly.";

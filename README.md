@@ -29,6 +29,20 @@ Until a registration link or contact email is set, the page shows "Registration 
 
 Other files: `public/leadcom-2026.ics` (Add to calendar), `app/opengraph-image.tsx` (the preview image on WhatsApp and LinkedIn), `public/pattern-*.svg` (cool gray pattern).
 
+## Using Gotham and Myriad Pro
+
+The Toastmasters brand headline font is Gotham and the body font is Myriad Pro. Both are commercial fonts, so this project ships with the brand-approved free alternates (Montserrat and Source Sans 3). The CSS font stack already prefers Gotham and Myriad Pro whenever they are available, so the page upgrades automatically on devices where they are installed.
+
+To serve Gotham to every visitor, you need web-font files (.woff2) covered by a licence that allows web use. Put them in `public/fonts/` and add this to the top of `app/globals.css`:
+
+```css
+@font-face { font-family: "Gotham"; font-weight: 700; font-display: swap; src: url("/fonts/gotham-bold.woff2") format("woff2"); }
+@font-face { font-family: "Gotham"; font-weight: 600; font-display: swap; src: url("/fonts/gotham-medium.woff2") format("woff2"); }
+@font-face { font-family: "Gotham"; font-weight: 500; font-display: swap; src: url("/fonts/gotham-book.woff2") format("woff2"); }
+```
+
+Ask the Toastmasters Brand Team (brand@toastmasters.org) which web-font licence applies to District sites.
+
 ## Put it on GitHub
 
 1. Sign in at github.com, click **+ > New repository**. Name it `leadcom-2026`. Choose Private (or Public), and do not add a README, .gitignore or licence.
