@@ -59,7 +59,7 @@ export default async function Image() {
               color: "#A9B2B1",
             }}
           >
-            An invitation to HR and talent leaders
+            An invitation to HR and Talent Leaders
           </div>
         </div>
         <div

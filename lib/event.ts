@@ -39,13 +39,13 @@ export const event = {
 };
 
 export const kicker =
-  "Toastmasters District 229 invites HR and talent leaders to";
+  "Toastmasters District 229 invites HR and Talent Leaders to";
 
 export const lead =
-  "An invitation to HR and talent leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
+  "An invitation to HR and Talent Leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
 
 export const audience =
-  "HR, learning and development, and talent leaders from corporates that do not yet have a Toastmasters club.";
+  "HR, Learning and Development, and Talent Leaders from corporates that do not yet have a Toastmasters club.";
 
 export const about =
   "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers.";
