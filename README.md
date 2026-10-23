@@ -1,6 +1,6 @@
 # LeadCom 2026 landing page
 
-Next.js (App Router, TypeScript) landing page for LeadCom 2026, 14 November 2026, The Westin Chennai Velachery.
+Next.js (App Router, TypeScript) landing page for LeadCom 2026, 5 December 2026, The Westin Chennai Velachery.
 Styled only with the Toastmasters brand palette (Loyal Blue, True Maroon, Cool Gray, Fair Gray, white) and the brand typefaces' free alternates (Montserrat for Gotham, Source Sans 3 for Myriad Pro).
 
 ## Run it locally

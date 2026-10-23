@@ -7,12 +7,12 @@ export const event = {
   host: "Toastmasters District 229",
 
   // Date and time (India Standard Time)
-  dateISO: "2026-11-14",
-  startISO: "2026-11-14T09:30:00+05:30",
-  endISO: "2026-11-14T13:00:00+05:30",
+  dateISO: "2026-12-5",
+  startISO: "2026-12-5T09:30:00+05:30",
+  endISO: "2026-12-5T13:00:00+05:30",
   weekday: "Saturday",
-  day: "14",
-  month: "November",
+  day: "5",
+  month: "December",
   year: "2026",
   timeLabel: "9:30 a.m. – 1:00 p.m.",
   timeNote: "Followed by lunch",

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export const alt = "LeadCom 2026, 14 November 2026, The Westin Chennai Velachery";
+export const alt = "LeadCom 2026, 5 December 2026, The Westin Chennai Velachery";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -72,7 +72,7 @@ export default async function Image() {
             paddingTop: 28,
           }}
         >
-          <div>14 November 2026 · 9:30 a.m. – 1:00 p.m., followed by lunch</div>
+          <div>5 December 2026 · 9:30 a.m. – 1:00 p.m., followed by lunch</div>
           <div style={{ marginTop: 6, color: "#A9B2B1" }}>
             The Westin Chennai Velachery · Toastmasters District 229
           </div>

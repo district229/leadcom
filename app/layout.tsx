@@ -7,7 +7,7 @@ import Effects from "@/components/Effects";
 
 const title = `${event.name} | ${event.host}`;
 const description =
-  "An invitation for HR leaders to see how Toastmasters builds confident communicators and leaders at work. 14 November 2026, The Westin Chennai Velachery.";
+  "An invitation for HR leaders to see how Toastmasters builds confident communicators and leaders at work. 5 December 2026, The Westin Chennai Velachery.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(event.siteUrl),
