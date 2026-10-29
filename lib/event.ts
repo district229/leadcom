@@ -3,7 +3,7 @@
 
 export const event = {
   name: "LeadCom 2026",
-  tagline: "Where Leaders Are Made",
+  tagline: "Celebrate Leadership and Communication",
   host: "Toastmasters District 229",
 
   // Date and time (India Standard Time)
@@ -29,7 +29,7 @@ export const event = {
   // the NEXT_PUBLIC_REGISTER_URL environment variable in Vercel.
   // While this is empty, the Registration section shows "More details will be
   // released soon" and no register button is displayed.
-  registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "",
+  registerUrl: process.env.NEXT_PUBLIC_REGISTER_URL ?? "/register",
   // Optional: shown in the Registration section.
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
 

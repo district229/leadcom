@@ -14,8 +14,8 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:leadcom-2026@district229.org
 DTSTAMP:20261022T000000Z
-DTSTART;TZID=Asia/Kolkata:20261114T093000
-DTEND;TZID=Asia/Kolkata:20261114T130000
+DTSTART;TZID=Asia/Kolkata:20261205T093000
+DTEND;TZID=Asia/Kolkata:20261205T130000
 SUMMARY:LeadCom 2026
 DESCRIPTION:An invitation for HR leaders to see how Toastmasters builds confident communicators and leaders at work. Lunch follows the programme.
 LOCATION:The Westin Chennai Velachery
