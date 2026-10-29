@@ -60,8 +60,7 @@ export default function RegisterPage() {
             </a>
             <h1>Reserve your seat</h1>
             <p className="reg-sub">
-              {event.name}, {event.weekday} {event.day} {event.month} {event.year}. A morning for HR
-              and Talent Leaders to see how Toastmasters builds confident communicators and leaders.
+              {event.name}, {event.weekday} {event.day} {event.month} {event.year}. Limited seats only, Register now and Join us to Celebrate Leadership & Communication !
             </p>
           </div>
         </section>
