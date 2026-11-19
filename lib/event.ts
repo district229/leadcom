@@ -21,7 +21,7 @@ export const event = {
     name: "The Westin Chennai Velachery",
     city: "Chennai",
     mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=The+Westin+Chennai+Velachery",
+        "https://www.google.com/maps/search/?api=1&query=The+Westin+Chennai+Velachery",
   },
 
   // ---- Fill these in when you have them ----
@@ -35,20 +35,20 @@ export const event = {
 
   // Public address of the page (used for link previews on WhatsApp, LinkedIn, etc.)
   siteUrl:
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://leadcom.district229.org",
+      process.env.NEXT_PUBLIC_SITE_URL ?? "https://leadcom.district229.org",
 };
 
 export const kicker =
-  "Toastmasters District 229 invites HR and Talent Leaders to";
+    "Toastmasters District 229 invites HR and Talent Leaders to";
 
 export const lead =
-  "An invitation to HR and Talent Leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
+    "An invitation to HR and Talent Leaders to experience how Toastmasters develops confident communicators and capable leaders, ahead of any conversation about joining.";
 
 export const audience =
-  "HR, Learning and Development, and Talent Leaders from corporates that do not yet have a Toastmasters club.";
+    "HR, Learning and Development, and Talent Leaders from corporates that do not yet have a Toastmasters club.";
 
 export const about =
-  "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers.";
+    "Toastmasters is a non-profit education organisation. For more than 100 years, members have built confidence in speaking, listening and leadership through practice, feedback and encouragement in a club of peers.";
 
 // The two image-and-text sections. Images are added in public/images
 // (see README): leadcom-1.jpg and leadcom-2.jpg.
@@ -96,7 +96,7 @@ export const splits = [
 ];
 
 export const promise =
-  "Empowering individuals through personal and professional development.";
+    "Empowering individuals through personal and professional development.";
 
 export const values = [
   {
@@ -117,29 +117,90 @@ export const values = [
   },
 ];
 
-// Edit this list to match your final programme.
+// The programme, in order. "time" is shown above each title.
 export const programme = [
   {
-    title: "Welcome and introduction",
-    body: "Why communication and leadership skills matter to your people, and what Toastmasters is.",
+    time: "9:15 a.m.",
+    title: "Registration & Networking",
+    body: "Arrive, collect your badge and meet fellow guests over tea and coffee.",
   },
   {
-    title: "A Toastmasters meeting, up close",
-    body: "Watch members speak, evaluate and lead in a short demonstration meeting.",
+    time: "10:00 a.m.",
+    title: "Opening of the session",
+    body: "A warm welcome to LeadCom 2026.",
   },
   {
-    title: "How a corporate club works",
-    body: "Hear how a club inside a company is set up and what it takes to run one.",
+    time: "10:05 a.m.",
+    title: "Address by the District Director",
+    body: "Vinothkumar B, DTM, District Director, Toastmasters District 229.",
   },
   {
-    title: "Your questions",
-    body: "An open conversation about fit, effort and next steps, with no obligation to join.",
+    time: "10:15 a.m.",
+    title: "Keynote",
+    body: "Relevance of Communication Skills in the AI Age.",
   },
   {
-    title: "Lunch and networking",
-    body: "Continue the conversation with members and fellow HR leaders over lunch.",
+    time: "10:45 a.m.",
+    title: "Toastmasters Demonstration Meeting",
+    body: "Prepared speeches, impromptu speeches and evaluations, performed live by members.",
+  },
+  {
+    time: "11:20 a.m.",
+    title: "Guest Speech",
+    body: "Speaker to be announced.",
+  },
+  {
+    time: "11:30 a.m.",
+    title: "Panel Discussion",
+    body: "The price paid by organisations for lack of effective communication.",
+  },
+  {
+    time: "12:00 p.m.",
+    title: "Recognitions and Vote of Thanks",
+    body: "Closing the formal programme.",
+  },
+  {
+    time: "12:15 p.m.",
+    title: "Lunch & Networking",
+    body: "Continue the conversation with members and fellow HR Leaders over lunch.",
   },
 ];
 
 export const programmeNote =
-  "The full programme and speakers will be announced shortly.";
+    "Registration and networking open at 9:15 a.m.";
+
+// ---------------------------------------------------------------------------
+// Keynote speaker and panel. Shown in their own section after the programme.
+// - Leave "name" empty and the card shows "To be announced".
+// - To add a photo, put the file in public/images/speakers/ and set
+//   photo: "/images/speakers/keynote.jpg". Without a photo, initials are shown.
+// ---------------------------------------------------------------------------
+export const keynote = {
+  time: "10:15 a.m.",
+  topic: "Relevance of Communication Skills in the AI Age",
+  name: "", // add the keynote speaker's name here
+  role: "", // e.g. "Chief Executive Officer, Company"
+  photo: "",
+};
+
+export const panel = {
+  time: "11:30 a.m.",
+  topic: "The price paid by organisations for lack of effective communication",
+  moderator: {
+    name: "Thomas Abraham, DTM",
+    role: "Debate Moderator",
+    photo: "",
+  },
+  panelists: [
+    {
+      name: "Suganthi Periasamy, DTM",
+      role: "Region 13 Director, Toastmasters International",
+      photo: "",
+    },
+    {
+      name: "Gangapriya Chakravarthy",
+      role: "Country Head, Ford GBS, Chennai",
+      photo: "",
+    },
+  ],
+};

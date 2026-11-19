@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import Countdown from "@/components/Countdown";
 import ImageSlot from "@/components/ImageSlot";
+import Speakers from "@/components/Speakers";
 import {
   event,
   kicker,
@@ -326,6 +327,7 @@ export default function Page() {
             <ol className="agenda" data-reveal="line">
               {programme.map((p, i) => (
                 <li key={p.title} data-reveal style={delay(0.12 + i * 0.1)}>
+                  <span className="agenda-time">{p.time}</span>
                   <h3>{p.title}</h3>
                   <p>{p.body}</p>
                 </li>
@@ -333,6 +335,8 @@ export default function Page() {
             </ol>
           </div>
         </section>
+
+        {/*<Speakers />*/}
 
         {/* ---------- Registration (always visible) ---------- */}
         <section className="section section-fair" id="register">
