@@ -179,28 +179,31 @@ export const keynote = {
   time: "10:15 a.m.",
   topic: "Relevance of Communication Skills in the AI Age",
   name: "", // add the keynote speaker's name here
-  role: "", // e.g. "Chief Executive Officer, Company"
-  photo: "",
+  designation: "", // e.g. "Chief Executive Officer, Company"
+  photo: "", // e.g. "/images/speakers/keynote.jpg"
 };
 
 export const panel = {
   time: "11:30 a.m.",
   topic: "The price paid by organisations for lack of effective communication",
-  moderator: {
-    name: "Thomas Abraham, DTM",
-    role: "Debate Moderator",
-    photo: "",
-  },
-  panelists: [
+  people: [
     {
       name: "Suganthi Periasamy, DTM",
-      role: "Region 13 Director, Toastmasters International",
-      photo: "",
+      part: "Panelist",
+      designation: "Region 13 Director, Toastmasters International",
+      photo: "/images/Suganthi.jpeg",
     },
     {
       name: "Gangapriya Chakravarthy",
-      role: "Country Head, Ford GBS, Chennai",
-      photo: "",
+      part: "Panelist",
+      designation: "Country Head, Ford GBS, Chennai",
+      photo: "/images/panel2.jpeg",
+    },
+    {
+      name: "Thomas Abraham, DTM",
+      part: "Debate Moderator",
+      designation: "",
+      photo: "/images/Thomas.jpg",
     },
   ],
 };

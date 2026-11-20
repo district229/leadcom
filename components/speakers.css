@@ -1,143 +1,192 @@
-/* Keynote and panel section. Brand colours only. */
+/* Speakers section: Loyal Blue band, white type, Happy Yellow used only for small labels. */
 
-.speakers-grid {
-    display: grid;
-    gap: clamp(20px, 3vw, 32px);
-    margin-top: clamp(32px, 5vw, 56px);
-}
-@media (min-width: 900px) {
-    .speakers-grid {
-        grid-template-columns: 1fr 1.1fr;
-        align-items: stretch;
-    }
-}
-
-.keynote-card,
-.panel-card {
-    padding: clamp(24px, 4vw, 44px);
-    display: flex;
-    flex-direction: column;
-}
-.keynote-card {
+.spk-section {
+    --yellow: #f2df74;
     background: var(--blue);
     color: var(--white);
-    border-top: 5px solid var(--maroon);
+    padding-block: clamp(44px, 6vw, 72px);
 }
-.panel-card {
-    background: var(--white);
-    color: var(--blue);
-    border: 1px solid var(--rule);
-    border-top: 5px solid var(--maroon);
+.spk-section h2 {
+    color: var(--white);
+}
+.spk-section .rule {
+    background: var(--yellow);
+}
+.spk-head {
+    text-align: center;
 }
 
-.eyebrow {
+.spk-label {
     font-family: var(--font-head);
     font-weight: 600;
     font-size: 0.8125rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-}
-.keynote-card .eyebrow {
-    color: var(--gray);
-}
-.panel-card .eyebrow {
-    color: var(--maroon);
+    color: var(--yellow);
 }
 
-.keynote-topic,
-.panel-topic {
-    margin-top: 14px;
-    font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+/* ---------- Panel ---------- */
+.spk-panel {
+    margin-top: clamp(24px, 3.5vw, 40px);
+    text-align: center;
+}
+.spk-panel-title {
+    max-width: 28em;
+    margin: 10px auto 0;
+    font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.65rem);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--white);
 }
 
-.person {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-.person-lg {
-    margin-top: auto;
-    padding-top: 32px;
-}
-.portrait {
-    flex: none;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    overflow: hidden;
+.spk-people {
     display: grid;
-    place-items: center;
-    background: var(--fair);
-    color: var(--blue);
+    gap: 28px;
+    margin: clamp(28px, 4vw, 44px) auto 0;
+    max-width: 880px;
+}
+.spk-part {
     font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.125rem;
-    border: 2px solid var(--gray);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
 }
-.portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.person-lg .portrait {
-    width: 88px;
-    height: 88px;
-    font-size: 1.5rem;
-    border-color: var(--white);
-}
-.person-name {
+.spk-name {
+    margin-top: 6px;
     font-family: var(--font-head);
     font-weight: 700;
     font-size: 1.125rem;
     line-height: 1.25;
+    color: var(--white);
 }
-.person-lg .person-name {
-    font-size: 1.3rem;
-}
-.person-role {
-    margin-top: 2px;
+.spk-desig {
+    margin-top: 6px;
     font-size: 0.9375rem;
-    line-height: 1.4;
-}
-.keynote-card .person-role {
+    line-height: 1.45;
     color: var(--gray);
 }
 
-.panel-people {
-    margin-top: 28px;
+/* ---------- Portrait frame ---------- */
+.portrait {
+    position: relative;
+    isolation: isolate;
+    margin: 0;
+    width: 100%;
+}
+.portrait::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate(8px, 8px);
+    border: 1.5px solid var(--gray);
+    z-index: -1;
+}
+.portrait-mat {
+    padding: 5px;
+    background: var(--white);
+}
+.portrait-mat img,
+.portrait-empty {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+}
+.portrait-empty {
     display: grid;
+    place-items: center;
+    background: var(--fair);
+    color: var(--gray);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    letter-spacing: 0.04em;
 }
-.panel-people .person {
-    padding: 18px 0;
-    border-top: 1px solid var(--rule);
+
+/* Phones: each person is a compact row */
+@media (max-width: 719px) {
+    .spk-people {
+        text-align: left;
+    }
+    .spk-people li {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        column-gap: 20px;
+        align-items: center;
+        padding: 0 8px 8px 0;
+    }
 }
-.panel-people .person:first-child {
-    border-top: 0;
-    padding-top: 0;
+
+/* Tablet and desktop: three portraits in one row, centred under the topic */
+@media (min-width: 720px) {
+    .spk-people {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px;
+    }
+    .spk-people li {
+        padding: 0 8px 0 0;
+    }
+    .spk-meta {
+        margin-top: 18px;
+        padding-inline: 4px;
+    }
 }
-.person-tag {
-    margin-left: auto;
-    flex: none;
-    padding: 4px 10px;
-    background: var(--maroon);
+
+/* ---------- Keynote (styles kept for when it returns) ---------- */
+.spk-keynote {
+    display: grid;
+    gap: 28px;
+    align-items: center;
+    margin-top: clamp(28px, 4vw, 44px);
+}
+.spk-keynote-name {
+    margin-top: 12px;
+    font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--white);
+}
+.spk-keynote-name.is-tba {
+    color: var(--gray);
+}
+.spk-keynote-desig {
+    margin-top: 8px;
+    color: var(--gray);
+}
+.spk-topic-box {
+    margin-top: 24px;
+    padding-left: 18px;
+    border-left: 3px solid var(--maroon);
+}
+.spk-topic-box dt {
     font-family: var(--font-head);
     font-weight: 600;
     font-size: 0.75rem;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    color: var(--gray);
 }
-
-/* Time label on the agenda */
-.agenda-time {
-    display: block;
-    margin-bottom: 4px;
+.spk-topic-box dd {
+    margin-top: 4px;
     font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.8125rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--maroon);
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1.4;
+}
+.spk-keynote-media {
+    width: min(100%, 280px);
+    justify-self: center;
+    padding: 0 8px 8px 0;
+}
+@media (min-width: 900px) {
+    .spk-keynote {
+        grid-template-columns: 1.4fr 0.6fr;
+        gap: 56px;
+    }
+    .spk-keynote-media {
+        justify-self: end;
+    }
 }

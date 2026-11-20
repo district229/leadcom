@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
-import { keynote, panel } from "@/lib/event";
+// To bring the keynote back: add `keynote` to this import and remove the comment
+// markers around the "Keynote" block below.
+import { panel } from "@/lib/event";
 import "./speakers.css";
 
 const delay = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
@@ -7,7 +9,6 @@ const delay = (s: number) => ({ "--d": `${s}s` }) as CSSProperties;
 function initials(name: string) {
     return name
         .replace(/,.*$/, "")
-        .replace(/^(Ms|Mr|Mrs|Dr)\.?\s+/i, "")
         .split(/\s+/)
         .filter(Boolean)
         .slice(0, 2)
@@ -15,68 +16,80 @@ function initials(name: string) {
         .join("");
 }
 
+// A framed portrait. Without a photo it shows a quiet placeholder with initials.
 function Portrait({ name, photo }: { name: string; photo?: string }) {
     return (
-        <span className="portrait" aria-hidden={photo ? undefined : true}>
-      {photo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={photo} alt={name} />
-      ) : (
-          <span>{name ? initials(name) : "?"}</span>
-      )}
-    </span>
+        <figure className="portrait">
+            <div className="portrait-mat">
+                {photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={photo} alt={name} loading="lazy" />
+                ) : (
+                    <span className="portrait-empty" aria-hidden="true">
+            {name ? initials(name) : ""}
+          </span>
+                )}
+            </div>
+        </figure>
     );
 }
 
 export default function Speakers() {
-    const people = [...panel.panelists, panel.moderator];
     return (
-        <section className="section section-fair" id="speakers">
+        <section className="section spk-section" id="speakers">
             <div className="wrap">
-                <div className="center narrow">
+                <header className="spk-head">
                     <span className="rule rule-center" aria-hidden="true" data-reveal />
                     <h2 data-reveal style={delay(0.05)}>
-                        Keynote and panel
+                        Who You Will Hear From
                     </h2>
-                    <p className="sub" data-reveal style={delay(0.12)}>
-                        Voices on why communication matters to the organisations you lead.
-                    </p>
-                </div>
+                </header>
 
-                <div className="speakers-grid">
-                    <article className="keynote-card" data-reveal style={delay(0.1)}>
-                        <p className="eyebrow">Keynote · {keynote.time}</p>
-                        <h3 className="keynote-topic">{keynote.topic}</h3>
-                        <div className="person person-lg">
-                            <Portrait name={keynote.name} photo={keynote.photo} />
-                            <div>
-                                <p className="person-name">
-                                    {keynote.name || "Keynote speaker to be announced"}
-                                </p>
-                                {keynote.role && <p className="person-role">{keynote.role}</p>}
-                            </div>
-                        </div>
-                    </article>
+                {/* ---------- Keynote (hidden for now) ----------
+        <article className="spk-keynote" aria-labelledby="keynote-name">
+          <div className="spk-keynote-text" data-reveal style={delay(0.1)}>
+            <p className="spk-label">Keynote speaker · {keynote.time}</p>
+            <h3
+              id="keynote-name"
+              className={`spk-keynote-name ${keynote.name ? "" : "is-tba"}`}
+            >
+              {keynote.name || "To be announced"}
+            </h3>
+            {keynote.designation && (
+              <p className="spk-keynote-desig">{keynote.designation}</p>
+            )}
+            <dl className="spk-topic-box">
+              <dt>Keynote topic</dt>
+              <dd>{keynote.topic}</dd>
+            </dl>
+          </div>
+          <div className="spk-keynote-media" data-reveal style={delay(0.2)}>
+            <Portrait name={keynote.name} photo={keynote.photo} />
+          </div>
+        </article>
+        */}
 
-                    <article className="panel-card" data-reveal style={delay(0.22)}>
-                        <p className="eyebrow">Panel discussion · {panel.time}</p>
-                        <h3 className="panel-topic">{panel.topic}</h3>
-                        <ul className="panel-people">
-                            {people.map((p, i) => (
-                                <li key={p.name} className="person">
-                                    <Portrait name={p.name} photo={p.photo} />
-                                    <div>
-                                        <p className="person-name">{p.name}</p>
-                                        <p className="person-role">{p.role}</p>
-                                    </div>
-                                    {i === people.length - 1 && (
-                                        <span className="person-tag">Moderator</span>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </article>
-                </div>
+                {/* ---------- Panel discussion ---------- */}
+                <article className="spk-panel" aria-labelledby="panel-title">
+                    <div className="spk-panel-text" data-reveal style={delay(0.1)}>
+                        <p className="spk-label">Panel Discussion · {panel.time}</p>
+                        <h3 id="panel-title" className="spk-panel-title">
+                            {panel.topic}
+                        </h3>
+                    </div>
+                    <ul className="spk-people">
+                        {panel.people.map((p, i) => (
+                            <li key={p.name} data-reveal style={delay(0.15 + i * 0.12)}>
+                                <Portrait name={p.name} photo={p.photo} />
+                                <div className="spk-meta">
+                                    <p className="spk-part">{p.part}</p>
+                                    <p className="spk-name">{p.name}</p>
+                                    {p.designation && <p className="spk-desig">{p.designation}</p>}
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </article>
             </div>
         </section>
     );

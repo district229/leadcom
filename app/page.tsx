@@ -336,7 +336,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/*<Speakers />*/}
+        <Speakers />
 
         {/* ---------- Registration (always visible) ---------- */}
         <section className="section section-fair" id="register">
