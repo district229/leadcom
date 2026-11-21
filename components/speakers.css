@@ -43,7 +43,7 @@
     display: grid;
     gap: 28px;
     margin: clamp(28px, 4vw, 44px) auto 0;
-    max-width: 880px;
+    max-width: 1040px;
 }
 .spk-part {
     font-family: var(--font-head);
@@ -120,11 +120,12 @@
     }
 }
 
-/* Tablet and desktop: three portraits in one row, centred under the topic */
+/* Tablet: two columns. Desktop: all four portraits in one row. */
 @media (min-width: 720px) {
     .spk-people {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 36px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px 36px;
+        max-width: 460px;
     }
     .spk-people li {
         padding: 0 8px 0 0;
@@ -132,6 +133,13 @@
     .spk-meta {
         margin-top: 18px;
         padding-inline: 4px;
+    }
+}
+@media (min-width: 1000px) {
+    .spk-people {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 32px;
+        max-width: 1040px;
     }
 }
 

@@ -188,10 +188,10 @@ export const panel = {
   topic: "The price paid by organisations for lack of effective communication",
   people: [
     {
-      name: "Suganthi Periasamy, DTM",
+      name: "Dr. P. Deiva Sundari",
       part: "Panelist",
-      designation: "Region 13 Director, Toastmasters International",
-      photo: "/images/Suganthi.jpeg",
+      designation: "Principal, SRM Easwari Engineering College",
+      photo: "/images/panel3.jpg.jpeg",
     },
     {
       name: "Gangapriya Chakravarthy",
@@ -200,10 +200,16 @@ export const panel = {
       photo: "/images/panel2.jpeg",
     },
     {
+      name: "Suganthi Periasamy, DTM",
+      part: "Panelist",
+      designation: "Region 13 Director, Toastmasters International",
+      photo: "/images/Suganthi.jpeg",
+    },
+    {
       name: "Thomas Abraham, DTM",
       part: "Debate Moderator",
       designation: "",
-      photo: "/images/Thomas.jpg",
+      photo: "/images/thomas.jpeg",
     },
   ],
 };
