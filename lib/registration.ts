@@ -5,11 +5,11 @@
 export const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyddR1TwoxeLvKUgAEjlgF4-L80CXjDFfC4Avik6khX5uPvfwshhhE-bnIiWRKX3_ohQA/exec";
 
 export const DUPLICATE_MESSAGE =
-  "This email address is already registered for LeadCom 2026. Please check your inbox, including spam, for your confirmation.";
+  "This email address is already registered for LeadCom 2026. Your confirmation will be sent by email once your registration is approved.";
 export const UNAVAILABLE_MESSAGE =
   "Registration is not available right now. Please try again in a few minutes.";
 export const UNCONFIRMED_MESSAGE =
-  "We could not confirm your registration. If you receive a confirmation email, you are registered. If not, please try again: the same email address cannot be registered twice.";
+  "We could not confirm your registration. Please try again. The same email address cannot be registered twice.";
 
 // Rules shared by the form, so every field is checked the same way.
 

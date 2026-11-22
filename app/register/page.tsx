@@ -15,8 +15,8 @@ const steps = [
     body: "It takes about a minute.",
   },
   {
-    title: "Check your email",
-    body: "You receive a registration ID and a QR code straight away.",
+    title: "Watch for your confirmation",
+    body: "You receive a registration ID now, and your confirmation email follows once your registration is approved.",
   },
   {
     title: "Show the QR code",

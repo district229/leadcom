@@ -17,10 +17,10 @@ type Stage = "signin" | "verifying" | "scan";
 type Cam = "off" | "starting" | "on" | "denied" | "unsupported";
 type Person = { id: string; name: string; org: string; designation: string };
 type Result =
-  | { kind: "ok"; person: Person; at: string; by: string }
-  | { kind: "already"; person: Person; at: string; by: string }
-  | { kind: "missing"; text: string }
-  | { kind: "error"; message: string };
+    | { kind: "ok"; person: Person; at: string; by: string }
+    | { kind: "already"; person: Person; at: string; by: string }
+    | { kind: "missing"; text: string }
+    | { kind: "error"; message: string; label?: string };
 
 const SESSION_KEY = "leadcom-desk-session";
 const SAME_CODE_PAUSE_MS = 5000;
@@ -154,35 +154,42 @@ export default function DeskScanner() {
 
   /* ---------- sending a scan or a typed ID ---------- */
   const submit = useCallback(
-    async (text: string) => {
-      if (busyRef.current) return;
-      busyRef.current = true;
-      setBusy(true);
-      try {
-        const data = await call({ action: "checkin", session: sessionRef.current, id: text });
-        if (data?.ok && (data.result === "checked_in" || data.result === "already")) {
-          const kind = data.result === "checked_in" ? "ok" : "already";
-          setResult({ kind, person: data.reg, at: data.at, by: data.by });
-          if (kind === "ok") setCount((n) => n + 1);
-          navigator.vibrate?.(kind === "ok" ? 90 : [60, 60, 60]);
-        } else if (data?.code === "not_found") {
-          setResult({ kind: "missing", text: text.slice(0, 40) });
-          navigator.vibrate?.([120, 60, 120]);
-        } else if (data?.code === "auth") {
-          signOut("Your sign-in expired. Please sign in again.");
-        } else {
+      async (text: string) => {
+        if (busyRef.current) return;
+        busyRef.current = true;
+        setBusy(true);
+        try {
+          const data = await call({ action: "checkin", session: sessionRef.current, id: text });
+          if (data?.ok && (data.result === "checked_in" || data.result === "already")) {
+            const kind = data.result === "checked_in" ? "ok" : "already";
+            setResult({ kind, person: data.reg, at: data.at, by: data.by });
+            if (kind === "ok") setCount((n) => n + 1);
+            navigator.vibrate?.(kind === "ok" ? 90 : [60, 60, 60]);
+          } else if (data?.code === "not_found") {
+            setResult({ kind: "missing", text: text.slice(0, 40) });
+            navigator.vibrate?.([120, 60, 120]);
+          } else if (data?.code === "not_approved") {
+            setResult({
+              kind: "error",
+              label: "Not approved yet",
+              message: `${data.reg?.name ?? "This registration"} is still waiting for approval. Please ask the organiser.`,
+            });
+            navigator.vibrate?.([120, 60, 120]);
+          } else if (data?.code === "auth") {
+            signOut("Your sign-in expired. Please sign in again.");
+          } else {
+            lastRef.current = { text: "", at: 0 };
+            setResult({ kind: "error", message: "Something went wrong. Please scan again." });
+          }
+        } catch {
           lastRef.current = { text: "", at: 0 };
-          setResult({ kind: "error", message: "Something went wrong. Please scan again." });
+          setResult({ kind: "error", message: "Could not reach the server. Check the Wi-Fi and scan again." });
+        } finally {
+          busyRef.current = false;
+          setBusy(false);
         }
-      } catch {
-        lastRef.current = { text: "", at: 0 };
-        setResult({ kind: "error", message: "Could not reach the server. Check the Wi-Fi and scan again." });
-      } finally {
-        busyRef.current = false;
-        setBusy(false);
-      }
-    },
-    [signOut]
+      },
+      [signOut]
   );
 
   /* ---------- camera ---------- */
@@ -265,164 +272,164 @@ export default function DeskScanner() {
 
   /* ---------- screens ---------- */
   const bar = (
-    <header className="desk-bar">
-      <div>
-        <p className="desk-title">Check-in desk</p>
-        <p className="desk-sub">LeadCom 2026 · Toastmasters District 229</p>
-      </div>
-      {stage === "scan" && (
-        <button type="button" className="desk-link" onClick={() => signOut()}>
-          Sign out
-        </button>
-      )}
-    </header>
+      <header className="desk-bar">
+        <div>
+          <p className="desk-title">Check-in desk</p>
+          <p className="desk-sub">LeadCom 2026 · Toastmasters District 229</p>
+        </div>
+        {stage === "scan" && (
+            <button type="button" className="desk-link" onClick={() => signOut()}>
+              Sign out
+            </button>
+        )}
+      </header>
   );
 
   if (stage !== "scan") {
     return (
-      <div className="desk">
-        <Script
-          src="https://accounts.google.com/gsi/client"
-          strategy="afterInteractive"
-          onReady={() => setGsiReady(true)}
-        />
-        {bar}
-        <main className="desk-main">
-          <div className="desk-card">
-            <h1>Staff sign-in</h1>
-            <p>For registration desk staff only. Sign in with the Google account the organiser added.</p>
-            {stage === "verifying" ? (
-              <p className="desk-wait" role="status">
-                <span className="spin" aria-hidden="true" /> Checking your account…
-              </p>
-            ) : !GOOGLE_CLIENT_ID ? (
-              <p className="desk-note" role="alert">
-                The Google client ID is not set yet. Add it in <code>lib/desk.ts</code>.
-              </p>
-            ) : (
-              <div className="desk-gsi" ref={btnRef} aria-label="Sign in with Google" />
-            )}
-            {notice && (
-              <p className="desk-note" role="alert">
-                {notice}
-              </p>
-            )}
-          </div>
-        </main>
-      </div>
+        <div className="desk">
+          <Script
+              src="https://accounts.google.com/gsi/client"
+              strategy="afterInteractive"
+              onReady={() => setGsiReady(true)}
+          />
+          {bar}
+          <main className="desk-main">
+            <div className="desk-card">
+              <h1>Staff sign-in</h1>
+              <p>For registration desk staff only. Sign in with the Google account the organiser added.</p>
+              {stage === "verifying" ? (
+                  <p className="desk-wait" role="status">
+                    <span className="spin" aria-hidden="true" /> Checking your account…
+                  </p>
+              ) : !GOOGLE_CLIENT_ID ? (
+                  <p className="desk-note" role="alert">
+                    The Google client ID is not set yet. Add it in <code>lib/desk.ts</code>.
+                  </p>
+              ) : (
+                  <div className="desk-gsi" ref={btnRef} aria-label="Sign in with Google" />
+              )}
+              {notice && (
+                  <p className="desk-note" role="alert">
+                    {notice}
+                  </p>
+              )}
+            </div>
+          </main>
+        </div>
     );
   }
 
   return (
-    <div className="desk">
-      {bar}
-      <main className="desk-main">
-        <p className="desk-who">
-          Signed in as <strong>{email}</strong>
-          {count > 0 && <span className="desk-count">{count} checked in on this phone</span>}
-        </p>
+      <div className="desk">
+        {bar}
+        <main className="desk-main">
+          <p className="desk-who">
+            Signed in as <strong>{email}</strong>
+            {count > 0 && <span className="desk-count">{count} checked in on this phone</span>}
+          </p>
 
-        <div className={`desk-view ${cam === "on" ? "is-on" : ""}`}>
-          <video ref={videoRef} playsInline muted autoPlay aria-label="Camera preview" />
-          <canvas ref={canvasRef} hidden />
-          <span className="corner tl" />
-          <span className="corner tr" />
-          <span className="corner bl" />
-          <span className="corner br" />
-          {cam !== "on" && (
-            <div className="desk-cam-msg">
-              {cam === "starting" && <p>Starting the camera…</p>}
-              {cam === "denied" && (
-                <>
-                  <p>Camera access is blocked. Allow the camera for this site in your browser settings, then try again.</p>
-                  <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
-                    Try again
-                  </button>
-                </>
-              )}
-              {cam === "unsupported" && (
-                <>
-                  <p>This browser cannot use the camera here. Use the box below to type the registration ID.</p>
-                  <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
-                    Try again
-                  </button>
-                </>
-              )}
-              {cam === "off" && (
-                <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
-                  Start camera
-                </button>
-              )}
-            </div>
-          )}
-          {busy && <div className="desk-busy" role="status">Checking…</div>}
-        </div>
-
-        <div className={`desk-result res-${result?.kind ?? "idle"}`} role="status" aria-live="assertive">
-          {!result && (
-            <>
-              <p className="res-label">Ready</p>
-              <p className="res-text">Point the camera at the guest&apos;s QR code.</p>
-            </>
-          )}
-          {result?.kind === "ok" && (
-            <>
-              <p className="res-label">Checked in</p>
-              <p className="res-name">{result.person.name}</p>
-              <p className="res-text">
-                {result.person.designation}, {result.person.org}
-              </p>
-              <p className="res-meta">{result.person.id}</p>
-            </>
-          )}
-          {result?.kind === "already" && (
-            <>
-              <p className="res-label">Already checked in</p>
-              <p className="res-name">{result.person.name}</p>
-              <p className="res-text">
-                {result.person.designation}, {result.person.org}
-              </p>
-              <p className="res-meta">
-                {result.person.id} · {result.at}
-                {result.by ? ` · by ${result.by}` : ""}
-              </p>
-            </>
-          )}
-          {result?.kind === "missing" && (
-            <>
-              <p className="res-label">Not found</p>
-              <p className="res-text">
-                No registration matches <strong>{result.text}</strong>. Check the ID or ask the guest to show the email
-                again.
-              </p>
-            </>
-          )}
-          {result?.kind === "error" && (
-            <>
-              <p className="res-label">Try again</p>
-              <p className="res-text">{result.message}</p>
-            </>
-          )}
-        </div>
-
-        <form className="desk-manual" onSubmit={onManual}>
-          <label htmlFor="manual-id">QR not working? Type the registration ID</label>
-          <div className="desk-manual-row">
-            <input
-              id="manual-id"
-              value={manual}
-              onChange={(e) => setManual(e.target.value.toUpperCase())}
-              placeholder="LC26-0007 or just 7"
-              autoComplete="off"
-              autoCapitalize="characters"
-              spellCheck={false}
-            />
-            <button type="submit" className="btn btn-primary" disabled={busy || !manual.trim()}>
-              Check in
-            </button>
+          <div className={`desk-view ${cam === "on" ? "is-on" : ""}`}>
+            <video ref={videoRef} playsInline muted autoPlay aria-label="Camera preview" />
+            <canvas ref={canvasRef} hidden />
+            <span className="corner tl" />
+            <span className="corner tr" />
+            <span className="corner bl" />
+            <span className="corner br" />
+            {cam !== "on" && (
+                <div className="desk-cam-msg">
+                  {cam === "starting" && <p>Starting the camera…</p>}
+                  {cam === "denied" && (
+                      <>
+                        <p>Camera access is blocked. Allow the camera for this site in your browser settings, then try again.</p>
+                        <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
+                          Try again
+                        </button>
+                      </>
+                  )}
+                  {cam === "unsupported" && (
+                      <>
+                        <p>This browser cannot use the camera here. Use the box below to type the registration ID.</p>
+                        <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
+                          Try again
+                        </button>
+                      </>
+                  )}
+                  {cam === "off" && (
+                      <button type="button" className="btn btn-light" onClick={() => void startCamera()}>
+                        Start camera
+                      </button>
+                  )}
+                </div>
+            )}
+            {busy && <div className="desk-busy" role="status">Checking…</div>}
           </div>
-        </form>
-      </main>
-    </div>
+
+          <div className={`desk-result res-${result?.kind ?? "idle"}`} role="status" aria-live="assertive">
+            {!result && (
+                <>
+                  <p className="res-label">Ready</p>
+                  <p className="res-text">Point the camera at the guest&apos;s QR code.</p>
+                </>
+            )}
+            {result?.kind === "ok" && (
+                <>
+                  <p className="res-label">Checked in</p>
+                  <p className="res-name">{result.person.name}</p>
+                  <p className="res-text">
+                    {result.person.designation}, {result.person.org}
+                  </p>
+                  <p className="res-meta">{result.person.id}</p>
+                </>
+            )}
+            {result?.kind === "already" && (
+                <>
+                  <p className="res-label">Already checked in</p>
+                  <p className="res-name">{result.person.name}</p>
+                  <p className="res-text">
+                    {result.person.designation}, {result.person.org}
+                  </p>
+                  <p className="res-meta">
+                    {result.person.id} · {result.at}
+                    {result.by ? ` · by ${result.by}` : ""}
+                  </p>
+                </>
+            )}
+            {result?.kind === "missing" && (
+                <>
+                  <p className="res-label">Not found</p>
+                  <p className="res-text">
+                    No registration matches <strong>{result.text}</strong>. Check the ID or ask the guest to show the email
+                    again.
+                  </p>
+                </>
+            )}
+            {result?.kind === "error" && (
+                <>
+                  <p className="res-label">{result.label ?? "Try again"}</p>
+                  <p className="res-text">{result.message}</p>
+                </>
+            )}
+          </div>
+
+          <form className="desk-manual" onSubmit={onManual}>
+            <label htmlFor="manual-id">QR not working? Type the registration ID</label>
+            <div className="desk-manual-row">
+              <input
+                  id="manual-id"
+                  value={manual}
+                  onChange={(e) => setManual(e.target.value.toUpperCase())}
+                  placeholder="LC26-0007 or just 7"
+                  autoComplete="off"
+                  autoCapitalize="characters"
+                  spellCheck={false}
+              />
+              <button type="submit" className="btn btn-primary" disabled={busy || !manual.trim()}>
+                Check in
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
   );
 }
