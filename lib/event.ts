@@ -120,7 +120,7 @@ export const values = [
 // The programme, in order. "time" is shown above each title.
 export const programme = [
   {
-    time: "9:15 a.m.",
+    time: "9:30 a.m.",
     title: "Registration & Networking",
     body: "Arrive, collect your badge and meet fellow guests over tea and coffee.",
   },
@@ -135,39 +135,39 @@ export const programme = [
     body: "Vinothkumar B, DTM, District Director, Toastmasters District 229.",
   },
   {
-    time: "10:15 a.m.",
+    time: "10:20 a.m.",
     title: "Keynote",
     body: "Relevance of Communication Skills in the AI Age.",
   },
   {
-    time: "10:45 a.m.",
+    time: "10:55 – 11:40 a.m.",
     title: "Toastmasters Demonstration Meeting",
     body: "Prepared speeches, impromptu speeches and evaluations, performed live by members.",
   },
   {
-    time: "11:20 a.m.",
-    title: "Guest Speech",
-    body: "Speaker to be announced.",
-  },
-  {
-    time: "11:30 a.m.",
+    time: "11:45 a.m. – 12:30 p.m.",
     title: "Panel Discussion",
     body: "The price paid by organisations for lack of effective communication.",
   },
   {
-    time: "12:00 p.m.",
+    time: "12:30 – 12:45 p.m.",
+    title: "Highlights of District 229",
+    body: "A short look at the work and achievements of Toastmasters District 229.",
+  },
+  {
+    time: "12:45 – 1:00 p.m.",
     title: "Recognitions and Vote of Thanks",
     body: "Closing the formal programme.",
   },
   {
-    time: "12:15 p.m.",
+    time: "1:00 p.m.",
     title: "Lunch & Networking",
     body: "Continue the conversation with members and fellow HR Leaders over lunch.",
   },
 ];
 
 export const programmeNote =
-    "Registration and networking open at 9:15 a.m.";
+    "Registration and networking begin at 9:30 a.m.";
 
 // ---------------------------------------------------------------------------
 // Keynote speaker and panel. Shown in their own section after the programme.
