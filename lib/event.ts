@@ -176,7 +176,7 @@ export const programmeNote =
 //   photo: "/images/speakers/keynote.jpg". Without a photo, initials are shown.
 // ---------------------------------------------------------------------------
 export const keynote = {
-  time: "10:15 a.m.",
+  time: "10:20 a.m.",
   topic: "Relevance of Communication Skills in the AI Age",
   name: "", // add the keynote speaker's name here
   designation: "", // e.g. "Chief Executive Officer, Company"
@@ -184,7 +184,7 @@ export const keynote = {
 };
 
 export const panel = {
-  time: "11:30 a.m.",
+  time: "11:45 a.m.",
   topic: "The price paid by organisations for lack of effective communication",
   people: [
     {
