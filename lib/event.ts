@@ -185,7 +185,7 @@ export const keynote = {
 
 export const panel = {
   time: "11:45 a.m.",
-  topic: "The price paid by organisations for lack of effective communication",
+  topic: "Building High-Performance Organisations Through Effective Communication",
   people: [
     {
       name: "Dr. P. Deiva Sundari",
