@@ -147,7 +147,7 @@ export const programme = [
   {
     time: "11:45 a.m. – 12:30 p.m.",
     title: "Panel Discussion",
-    body: "The price paid by organisations for lack of effective communication.",
+    body: "Building High-Performance Organisations Through Effective Communication",
   },
   {
     time: "12:30 – 12:45 p.m.",
