@@ -202,7 +202,7 @@ export const panel = {
     {
       name: "Suganthi Periasamy, DTM",
       part: "Panelist",
-      designation: "Region 13 Director, Toastmasters International",
+      designation: "International Director, Region 13, Toastmasters International",
       photo: "/images/Suganthi.jpeg",
     },
     {
