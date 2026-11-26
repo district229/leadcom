@@ -196,7 +196,7 @@ export const panel = {
     {
       name: "Gangapriya Chakravarthy",
       part: "Panelist",
-      designation: "Country Head, Ford GBS, Chennai",
+      designation: "Managing Director, Ford Motor Private Limited, Chennai",
       photo: "/images/panel2.jpeg",
     },
     {
